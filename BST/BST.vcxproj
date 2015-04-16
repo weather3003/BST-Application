@@ -85,8 +85,9 @@
     <ClCompile Include="criminal.cpp" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="Casefile.dat" />
-    <None Include="Criminal.dat" />
+    <None Include="Casefile.txt" />
+    <None Include="Criminal.out" />
+    <None Include="Criminal.txt" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

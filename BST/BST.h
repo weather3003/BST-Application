@@ -46,7 +46,7 @@ typedef struct Criminal
 			return 0;
 	}
 
-} DataType; //Change custom type name here
+} DataType; //Change custom type here
 
 
 class BST
@@ -54,12 +54,11 @@ class BST
 public:
 	BST();
 	~BST();
-	
 
 	bool Insert(DataType);
-
+	void PruneTree(DataType);
+	void Print(string);
 
 private:
-	BST(Node*);
 	Node * root;
 };

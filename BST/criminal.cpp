@@ -5,6 +5,7 @@
 #include"BST.h"
 using namespace std;
 
+//Fills a tree with criminals from a text file
 void populateTree(BST& tree, string file)
 {
 	string currentLine = "";
@@ -35,7 +36,8 @@ void populateTree(BST& tree, string file)
 	}
 }
 
-void populateCases(Criminal* list, string file)
+//Fills a list with cases from a file and returns the number of cases
+int populateCases(Criminal* list, string file)
 {
 	string currentLine = "";
 	ifstream cases(file);
@@ -57,21 +59,36 @@ void populateCases(Criminal* list, string file)
 			}
 
 			Criminal insertion = Criminal(data);
-			insertion.name = "CASE NUMBER " + i;
+			insertion.name = "CASE NUMBER " + to_string(i);
 			list[i - 1] = insertion;
 			i++;
 		}
 		else
 		{
 			cases.close();
-			return;
+			return i;
 		}
 	}
+	return 0;
 }
 
 void main()
 {
-	BST criminalTree; Criminal cases[25];
-	populateTree(criminalTree, "Criminal.dat");
-	populateCases(cases, "Casefile.dat");
+	ofstream clear("Criminal.out"); clear << ""; clear.close(); //Clears file
+	ofstream fout("Criminal.out", ios::app);
+
+	Criminal cases[25];
+	int numberOfCases = populateCases(cases, "Casefile.txt");
+	for (int i = 1; i < numberOfCases; i++)
+	{
+		BST criminalTree; populateTree(criminalTree, "Criminal.txt");
+		criminalTree.PruneTree(cases[i-1]);
+
+		if (i != 1) fout << endl;
+		fout << cases[i-1].name << endl << "PRIME SUSPECTS ARE..." << endl;
+		
+		criminalTree.Print("Criminal.out");
+	}
+
+	fout.close();
 }

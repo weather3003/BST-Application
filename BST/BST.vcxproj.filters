@@ -28,10 +28,13 @@
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
-    <None Include="Criminal.dat">
+    <None Include="Casefile.txt">
       <Filter>Resource Files</Filter>
     </None>
-    <None Include="Casefile.dat">
+    <None Include="Criminal.txt">
+      <Filter>Resource Files</Filter>
+    </None>
+    <None Include="Criminal.out">
       <Filter>Resource Files</Filter>
     </None>
   </ItemGroup>
